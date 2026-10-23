@@ -1061,12 +1061,17 @@ footer span {
     overflow: visible;
 }
 
+.hero-art {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
 .hero-image {
     display: block;
-    width: 50%;
-    height: baixo;
-    max-height: none;
+    width: 100%;
+    height: auto;
     object-fit: contain;
-    object-position: center;
     border-radius: 12px;
 }
