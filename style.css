@@ -1053,3 +1053,15 @@ footer span {
     padding: 8px;
   }
 }
+
+.hero-art {
+    overflow: hidden;
+}
+
+.hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
