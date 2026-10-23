@@ -1064,7 +1064,7 @@ footer span {
 .hero-image {
     display: block;
     width: 50%;
-    height: auto;
+    height: baixo;
     max-height: none;
     object-fit: contain;
     object-position: center;
