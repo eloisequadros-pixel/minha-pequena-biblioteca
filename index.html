@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17171b">
+
+    <title>Minha Pequena Biblioteca — Diário de Leitura</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Minha Pequena Biblioteca, início">
+            <span class="brand-mark">✦</span>
+            <span>
+                <strong>minha pequena biblioteca</strong>
+                <small>DIÁRIO DE LEITURA</small>
+            </span>
+        </a>
+
+        <nav class="top-nav" aria-label="Navegação principal">
+            <a href="#biblioteca">Biblioteca</a>
+            <a href="#diario">Meu diário</a>
+        </nav>
+
+        <button class="button button-small" id="open-add-top">
+            ＋ Novo livro
+        </button>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">
+                    <span></span> UM REFÚGIO ENTRE HISTÓRIAS
+                </p>
+
+                <h1>
+                    Algumas histórias<br>
+                    ficam <em>com a gente.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Um cantinho para guardar mundos, personagens,
+                    palavras favoritas e tudo aquilo que os livros
+                    deixam em nós.
+                </p>
+
+                <a class="text-link" href="#biblioteca">
+                    Entrar na minha biblioteca <span>↗</span>
+                </a>
+            </div>
+
+            <div class="hero-art" aria-label="Ilustração de livros antigos">
+                <div class="moon"></div>
+
+                <div class="spark spark-a">✧</div>
+                <div class="spark spark-b">✦</div>
+                <div class="spark spark-c">·</div>
+
+                <div class="book-stack">
+                    <div class="book book-back">
+                        <span></span>
+                    </div>
+
+                    <div class="book book-middle">
+                        <span></span>
+                    </div>
+
+                    <div class="book book-front">
+                        <span class="book-title">
+                            MINHA<br>
+                            BIBLIOTECA
+                        </span>
+                        <span class="book-ornament">❦</span>
+                    </div>
+                </div>
+
+                <div class="art-caption">
+                    “Ler é viver mil vidas.”
+                </div>
+            </div>
+        </section>
+
+        <section class="stats" aria-label="Estatísticas da leitura">
+
+            <article class="stat-card">
+                <span class="stat-icon">⌑</span>
+                <div>
+                    <strong id="read-count">0</strong>
+                    <span>livros lidos</span>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">✧</span>
+                <div>
+                    <strong id="reading-count">0</strong>
+                    <span>em andamento</span>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-icon">♡</span>
+                <div>
+                    <strong id="want-count">0</strong>
+                    <span>na lista de desejos</span>
+                </div>
+            </article>
+
+            <article class="stat-card quote-stat">
+                <span class="stat-icon">“</span>
+                <div>
+                    <strong id="quote-count">0</strong>
+                    <span>frases guardadas</span>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="section-heading" id="biblioteca">
+            <div>
+                <p class="eyebrow">SEU ACERVO PARTICULAR</p>
+                <h2>Minha biblioteca <span>✧</span></h2>
+            </div>
+
+            <button class="button" id="open-add">
+                ＋ Adicionar livro
+            </button>
+        </section>
+
+        <section class="library-controls">
+
+            <label class="search-box">
+                <span>⌕</span>
+                <input
+                    id="search"
+                    type="search"
+                    placeholder="Buscar por título ou autor..."
+                    aria-label="Buscar livros"
+                >
+            </label>
+
+            <div class="filters" role="group" aria-label="Filtrar livros por status">
+                <button class="filter active" data-filter="todos">Todos</button>
+                <button class="filter" data-filter="lido">Lidos</button>
+                <button class="filter" data-filter="lendo">Lendo</button>
+                <button class="filter" data-filter="quero">Quero ler</button>
+            </div>
+
+            <select id="sort" aria-label="Ordenar livros">
+                <option value="recentes">Mais recentes</option>
+                <option value="titulo">Título (A–Z)</option>
+                <option value="nota">Maior avaliação</option>
+            </select>
+
+        </section>
+
+        <section id="book-grid" class="book-grid" aria-live="polite"></section>
+
+        <section id="empty-state" class="empty-state">
+            <span class="empty-icon">✧</span>
+
+            <h3>Sua próxima história começa aqui.</h3>
+
+            <p>
+                Adicione o primeiro livro e comece a construir
+                sua biblioteca pessoal.
+            </p>
+
+            <button class="button" id="empty-add">
+                Adicionar meu primeiro livro
+            </button>
+        </section>
+
+        <section class="journal-section" id="diario">
+
+            <div class="journal-intro">
+                <p class="eyebrow">ANOTAÇÕES À LUZ DE VELAS</p>
+
+                <h2>Meu diário <em>de leitura</em></h2>
+
+                <p>
+                    Nem toda leitura termina na última página.
+                    Às vezes, uma frase fica, um personagem vira
+                    companhia ou uma história muda alguma coisa
+                    dentro da gente.
+                </p>
+            </div>
+
+            <div id="journal-quotes" class="journal-quotes">
+                <div class="quote-placeholder">
+                    <span>“</span>
+
+                    <p>
+                        Suas frases favoritas aparecerão aqui quando
+                        você as guardar nos detalhes de um livro.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <span>✦</span>
+            MINHA PEQUENA BIBLIOTECA
+            <span class="footer-divider">·</span>
+            feito de histórias e café
+            <span>☕</span>
+        </footer>
+
+    </main>
+
+    <dialog id="book-dialog" class="book-dialog">
+
+        <form id="book-form">
+
+            <div class="dialog-heading">
+                <div>
+                    <p class="eyebrow">UMA NOVA HISTÓRIA</p>
+                    <h2 id="dialog-title">Adicionar livro</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="icon-button"
+                    id="close-dialog"
+                    aria-label="Fechar"
+                >×</button>
+            </div>
+
+            <input type="hidden" id="book-id">
+
+            <div class="form-grid">
+
+                <label class="field full">
+                    Título do livro *
+                    <input
+                        id="title"
+                        required
+                        maxlength="120"
+                        placeholder="Ex.: A biblioteca da meia-noite"
+                    >
+                </label>
+
+                <label class="field">
+                    Autor *
+                    <input
+                        id="author"
+                        required
+                        maxlength="100"
+                        placeholder="Nome do autor"
+                    >
+                </label>
+
+                <label class="field">
+                    Status
+
+                    <select id="status">
+                        <option value="lido">Já li</option>
+                        <option value="lendo">Estou lendo</option>
+                        <option value="quero">Quero ler</option>
+                    </select>
+                </label>
+
+                <label class="field full">
+                    Link da capa (URL)
+
+                    <input
+                        id="cover"
+                        type="url"
+                        placeholder="https://..."
+                    >
+
+                    <small>
+                        Opcional. Cole um link direto para a imagem da capa.
+                    </small>
+                </label>
+
+                <div class="field full">
+                    <span class="field-label">Sua avaliação</span>
+
+                    <div
+                        id="rating-picker"
+                        class="rating-picker"
+                        role="radiogroup"
+                        aria-label="Avaliação de zero a cinco estrelas"
+                    >
+                        <button type="button" data-rating="1" aria-label="1 estrela">★</button>
+                        <button type="button" data-rating="2" aria-label="2 estrelas">★</button>
+                        <button type="button" data-rating="3" aria-label="3 estrelas">★</button>
+                        <button type="button" data-rating="4" aria-label="4 estrelas">★</button>
+                        <button type="button" data-rating="5" aria-label="5 estrelas">★</button>
+
+                        <span id="rating-label">Sem avaliação</span>
+                    </div>
+                </div>
+
+                <label class="field full">
+                    O que achei / resenha
+
+                    <textarea
+                        id="review"
+                        rows="3"
+                        maxlength="1200"
+                        placeholder="O que você sentiu lendo? O que achou da história?"
+                    ></textarea>
+                </label>
+
+                <label class="field full">
+                    Frase favorita
+
+                    <textarea
+                        id="favorite-quote"
+                        rows="2"
+                        maxlength="500"
+                        placeholder="Escreva uma frase que você quer guardar..."
+                    ></textarea>
+                </label>
+
+                <label class="field">
+                    Página da frase
+
+                    <input
+                        id="quote-page"
+                        type="text"
+                        maxlength="30"
+                        placeholder="Ex.: 87 (opcional)"
+                    >
+                </label>
+
+            </div>
+
+            <p class="form-note">
+                * Campos obrigatórios. Seus registros ficam salvos neste navegador.
+            </p>
+
+            <div class="dialog-actions">
+                <button
+                    type="button"
+                    class="button button-quiet"
+                    id="cancel-dialog"
+                >
+                    Cancelar
+                </button>
+
+                <button type="submit" class="button">
+                    Guardar no diário ✦
+                </button>
+            </div>
+
+        </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
