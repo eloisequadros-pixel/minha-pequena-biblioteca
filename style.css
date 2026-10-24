@@ -214,16 +214,11 @@ main {
 }
 
 .hero-art {
-  height: 330px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 68%, rgba(116, 52, 72, .27), transparent 54%),
-    linear-gradient(135deg, rgba(36, 54, 74, .22), transparent 70%);
-  border: 1px solid rgba(215, 183, 122, .12);
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
 }
 
 .hero-art:before,
@@ -1069,9 +1064,9 @@ footer span {
 }
 
 .hero-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
 }
